@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+}
+
+#highScore {
+  width: 50%;
+}
+
+#time {
+  text-align: right;
+  width: 50%;
+}
+
+#startQuiz,
+#questions,
+#endQuiz,
+#scoreList {
+  width: 200%;
+  text-align: center;
+  border: 3px solid black;
+}

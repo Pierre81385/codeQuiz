@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Quize</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <td id="highScore">View High Scores</td>
+        <td id="time">Time:<span>###</span></td>
+      </tr>
+      <tr id="mainView">
+        <td id="startQuiz">
+          <!-- Display Start Page -->
+          <h1>Coding Quiz Challenge</h1>
+          <h2>
+            Try to answer as many questions as you can correctly! See if you can
+            beat your high score! This quiz is timed.
+          </h2>
+          <input
+            type="button"
+            onclick="startGame(0)"
+            value="START"
+            id="start"
+          />
+        </td>
+        <!-- Questions Section -->
+        <td id="questions">
+          Questions View
+          <div>
+            <!-- Question -->
+            <p></p>
+            <!-- 4 Possible Answers -->
+            <button id="a1"></button>
+            <button id="a2"></button>
+            <button id="a3"></button>
+            <button id="a4"></button>
+            <!-- Result -->
+          </div>
+        </td>
+        <td id="endQuiz">
+          Thanks for playing! You're score was <span id="score"></span>! Please
+          enter your name to be added to the high score list:
+          <form>
+            <input type="text" value="Name" id="userName" />
+            <input
+              type="button"
+              value="Submit"
+              id="submitScore"
+              onclick="submitHighScore()"
+            />
+          </form>
+          <!-- Display End Page-->
+        </td>
+        <td id="scoreList">
+          Score View
+          <!-- Display List of High Scores -->
+        </td>
+      </tr>
+    </table>
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
