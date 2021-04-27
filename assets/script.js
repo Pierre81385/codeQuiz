@@ -1,3 +1,5 @@
+//Initialize page
+
 document.getElementById("startQuiz").style.display = "block";
 document.getElementById("questions").style.display = "none";
 document.getElementById("endQuiz").style.display = "none";
@@ -5,6 +7,8 @@ document.getElementById("scoreList").style.display = "none";
 
 var score = 0;
 var name = "";
+
+//Questions and Answers Arrays contained in object
 
 var questions = {
   questionText: [
@@ -22,6 +26,8 @@ var questions = {
   answerKey: [1, 3, 2, 4],
 };
 
+//Function to cycle through the questions
+
 var a1 = document.getElementById("a1");
 var a2 = document.getElementById("a2");
 var a3 = document.getElementById("a3");
@@ -32,6 +38,10 @@ var i = 0;
 function startGame(i) {
   document.getElementById("startQuiz").style.display = "none";
   document.getElementById("questions").style.display = "block";
+
+  if (i === 0) {
+    setTime();
+  }
 
   if (i < questions.questionText.length) {
     var p = document.querySelector("p");
@@ -70,6 +80,8 @@ function startGame(i) {
   }
 }
 
+//evaluate the answers
+
 function checkAnswers(value) {
   if (value == questions.answerKey[i]) {
     console.log("Correct Answer");
@@ -99,9 +111,15 @@ function checkAnswers(value) {
   }
 }
 
+//switch to end game screen, end timer
+
 function theEnd() {
+  i = 5;
+  timeEl.textContent = "###";
   document.getElementById("score").textContent = score;
 }
+
+//submit high score
 
 function submitHighScore() {
   var name = document.getElementById("userName").value;
@@ -112,4 +130,27 @@ function submitHighScore() {
     document.getElementById("endQuiz").style.display = "none";
     document.getElementById("scoreList").style.display = "block";
   }
+}
+
+//timer function
+
+var timeEl = document.getElementById("timeRemaining");
+var secondsLeft = 60;
+
+function setTime() {
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    if (i < 5) {
+      timeEl.textContent = "" + secondsLeft + "";
+    }
+
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      console.log("Game Over");
+      document.getElementById("questions").style.display = "none";
+      document.getElementById("endQuiz").style.display = "block";
+      timeEl.textContent = "---";
+      theEnd();
+    }
+  }, 1000);
 }
