@@ -39,6 +39,9 @@ function startGame(i) {
   document.getElementById("startQuiz").style.display = "none";
   document.getElementById("questions").style.display = "block";
 
+  console.log("Start score is: " + score);
+  console.log("Start value of i is: " + i);
+
   if (i === 0) {
     setTime();
   }
@@ -129,6 +132,7 @@ function submitHighScore() {
     console.log(name);
     document.getElementById("endQuiz").style.display = "none";
     document.getElementById("scoreList").style.display = "block";
+    return name;
   }
 }
 
@@ -154,3 +158,8 @@ function setTime() {
     }
   }, 1000);
 }
+
+var reset = document.getElementById("reset");
+reset.addEventListener("click", function () {
+  window.location.reload();
+});
