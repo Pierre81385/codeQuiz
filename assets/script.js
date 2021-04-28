@@ -18,10 +18,30 @@ var questions = {
     "Q4: Javascrip is:",
   ],
 
-  row1Answers: ["q1a1", "q1a2", "q1a3", "q1a4"],
-  row2Answers: ["q2a1", "q2a2", "q2a3", "q2a4"],
-  row3Answers: ["q3a1", "q3a2", "q3a3", "q3a4"],
-  row4Answers: ["q4a1", "q4a2", "q4a3", "q4a4"],
+  row1Answers: [
+    "Kittens",
+    "Pick up TV signals.",
+    "Gorrila Glue",
+    "The a longer version of Java.",
+  ],
+  row2Answers: [
+    "Int",
+    "Debug code.",
+    "The Console",
+    "A coffee based programming language.",
+  ],
+  row3Answers: [
+    "String",
+    "Store multiple values.",
+    "Google Maps",
+    "Cool, but not useful.",
+  ],
+  row4Answers: [
+    "Num",
+    "Avoid homework.",
+    "Fly Swatters",
+    "Creates the functionality of a website.",
+  ],
 
   answerKey: [1, 3, 2, 4],
 };
@@ -130,6 +150,9 @@ function submitHighScore() {
     alert("Please enter your name!");
   } else {
     console.log(name);
+
+    saveScore();
+
     document.getElementById("endQuiz").style.display = "none";
     document.getElementById("scoreList").style.display = "block";
     return name;
@@ -163,3 +186,13 @@ var reset = document.getElementById("reset");
 reset.addEventListener("click", function () {
   window.location.reload();
 });
+
+function saveScore() {
+  var userScore = [];
+  userScore[0] = score;
+  localStorage.setItem("userScore", JSON.stringify(userScore));
+
+  //...
+  var storedScore = JSON.parse(localStorage.getItem("userScore"));
+  console.log(storedScore);
+}

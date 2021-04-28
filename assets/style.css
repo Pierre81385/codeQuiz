@@ -17,5 +17,27 @@ table {
 #scoreList {
   width: 200%;
   text-align: center;
-  border: 3px solid black;
+}
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.button {
+  width: 25%;
+  color: black;
+  border: 5px solid black;
+  border-radius: 3px;
+}
+
+.button:hover {
+  background-color: green;
+}
+
+li {
+  padding-bottom: 5px;
 }
