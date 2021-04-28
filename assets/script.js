@@ -151,11 +151,34 @@ function submitHighScore() {
   } else {
     console.log(name);
 
-    saveScore();
+    //saveScore();
+
+    var scoreObject = {
+      name: name,
+      score: score,
+    };
+
+    var storedScore = JSON.parse(localStorage.getItem("userScore")) || []; //
+
+    storedScore.push(scoreObject);
+
+    localStorage.setItem("userScore", JSON.stringify(storedScore));
+
+    //...
 
     document.getElementById("endQuiz").style.display = "none";
     document.getElementById("scoreList").style.display = "block";
     return name;
+  }
+}
+
+function writeScore() {
+  for (var w = 0; w < storedScore.length; w++) {
+    var liEl = document.createElement("li");
+
+    liEl.textContent = storedScore[w];
+    var ul = document.getElementById("winners");
+    ul.appendChild(liEl);
   }
 }
 
@@ -187,17 +210,22 @@ reset.addEventListener("click", function () {
   window.location.reload();
 });
 
-function saveScore() {
-  var userScore = [];
-  userScore[0] = score;
-  localStorage.setItem("userScore", JSON.stringify(userScore));
+// function saveScore() {
+//   var userScore = [];
+//   userScore[0] = score;
 
-  //...
-  var storedScore = JSON.parse(localStorage.getItem("userScore"));
-  console.log(storedScore);
-}
+//   var userInfo {
 
-var userScore = {
-  userName: submitHighScore.name,
-  userScore: score,
-};
+//   }
+
+//   localStorage.setItem("userScore", JSON.stringify(userScore));
+
+//   //...
+//   var storedScore = JSON.parse(localStorage.getItem("userScore")) || [];
+//   console.log(storedScore);
+// }
+
+// var userScore = {
+//   userName: submitHighScore.name,
+//   userScore: score,
+// };
