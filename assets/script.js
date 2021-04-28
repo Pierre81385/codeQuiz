@@ -196,3 +196,8 @@ function saveScore() {
   var storedScore = JSON.parse(localStorage.getItem("userScore"));
   console.log(storedScore);
 }
+
+var userScore = {
+  userName: submitHighScore.name,
+  userScore: score,
+};
