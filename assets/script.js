@@ -158,27 +158,28 @@ function submitHighScore() {
       score: score,
     };
 
-    var storedScore = JSON.parse(localStorage.getItem("userScore")) || []; //
+    var storedScore = JSON.parse(localStorage.getItem("userScore") || {}); //
+    console.log(storedScore);
 
     storedScore.push(scoreObject);
 
     localStorage.setItem("userScore", JSON.stringify(storedScore));
 
-    //...
+    for (var w = 0; w < storedScore.length; w++) {
+      console.log(storedScore[w]);
+      var liEl = document.createElement("li");
+      var output = JSON.parse(localStorage.getItem("userScore"));
+      if (output !== null) {
+        liEl.textContent = output.name + "" + output.score;
+      }
+      //liEl.textContent = storedScore.name + "" + storedScore.score;
+      var ul = document.getElementById("winners");
+      ul.appendChild(liEl);
+    }
 
     document.getElementById("endQuiz").style.display = "none";
     document.getElementById("scoreList").style.display = "block";
     return name;
-  }
-}
-
-function writeScore() {
-  for (var w = 0; w < storedScore.length; w++) {
-    var liEl = document.createElement("li");
-
-    liEl.textContent = storedScore[w];
-    var ul = document.getElementById("winners");
-    ul.appendChild(liEl);
   }
 }
 
@@ -209,23 +210,3 @@ var reset = document.getElementById("reset");
 reset.addEventListener("click", function () {
   window.location.reload();
 });
-
-// function saveScore() {
-//   var userScore = [];
-//   userScore[0] = score;
-
-//   var userInfo {
-
-//   }
-
-//   localStorage.setItem("userScore", JSON.stringify(userScore));
-
-//   //...
-//   var storedScore = JSON.parse(localStorage.getItem("userScore")) || [];
-//   console.log(storedScore);
-// }
-
-// var userScore = {
-//   userName: submitHighScore.name,
-//   userScore: score,
-// };
